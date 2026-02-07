@@ -1,15 +1,29 @@
 body{
   font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-  color: aliceblue;
+  background: linear-gradient(
+    120deg,
+    #000000,
+    #1a0000,
+    #330000
+  );
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
+  text-align: center;
 }
 #buttonsurprise{
   font-size: 25px;
-  background-color: cadetblue;
-  color: blue;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+#buttonsurprise:hover{
+  background: #790006;
 }
