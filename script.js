@@ -1,8 +1,11 @@
 const button = document.getElementById('buttonsurprise');
+const display = document.getElementById('result');
+const movies = ["Matrix", "Interstellar", "O Poderoso Chefão"];
 
-function alertbutton(){
-  alert("Hello World, it´s ok code!");
-  console.log("Surprise button click sucess.")
+function surprisemovie() {
+  const randomnumber = Math.floor(Math.random() * movies.length);
+  const chosenmovie = movies[randomnumber];
+  display.innerText = "Your should watch: " + chosenmovie;
 }
 
-button.addEventListener('click', alertbutton);
+button.addEventListener('click', surprisemovie);
