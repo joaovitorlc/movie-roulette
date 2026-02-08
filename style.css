@@ -11,8 +11,10 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 0 200px;
+  margin: 0;
+  padding: 0;
   text-align: center;
+  width: 100%;
 }
 #maintitle{
   font-size: 55px;
@@ -38,8 +40,28 @@ body{
 }
 
 .container {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;    
-    text-align: center;       
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;      /* Ocupa quase toda a largura em telas pequenas */
+  max-width: 1200px; /* Mas não deixa o texto esticar demais em telas gigantes */
+  text-align: center;
+  padding: 20px;
+}
+
+footer {
+    width: 100%;             /* Isso faz a linha atravessar a tela toda */
+    padding: 20px 0;
+    border-top: 1px solid #333; /* A linha que você pediu */
+    background-color: #000;  /* Garante que o fundo seja preto */
+    text-align: center;
+    margin-top: auto;        /* Garante que ele fique no final */
+}
+
+footer p {
+    margin: 0;
+    color: #888;
+    font-size: 0.9rem;
 }
