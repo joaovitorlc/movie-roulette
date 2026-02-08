@@ -11,7 +11,7 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 0;
+  margin: 0 100px;
   text-align: center;
 }
 #maintitle{
@@ -30,4 +30,10 @@ body{
 #buttonsurprise:hover{
   background: #b9010a;
   color: rgb(255, 255, 191);
+}
+#moviephoto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
 }
