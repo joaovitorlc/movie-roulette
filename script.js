@@ -15,11 +15,21 @@ async function surprisemovie() {
   display.innerText = "Your should watch: " + chosenmovie.title;
   document.getElementById('overview').innerText = chosenmovie.overview;
 
-  const image = document.getElementById('moviephoto');
-  const pathphoto = "https://image.tmdb.org/t/p/w500" + chosenmovie.poster_path;
+const image = document.getElementById('moviephoto');
   
+  // 1. Remove a classe de animação para resetar
+  image.classList.remove('animar-foto');
+
+  // 2. Truque para "resetar" o elemento no navegador
+  void image.offsetWidth; 
+
+  // 3. Troca a foto (isso acontece enquanto ela está girando ou antes)
+  const pathphoto = "https://image.tmdb.org/t/p/w500" + chosenmovie.poster_path;
   image.src = pathphoto;
-  image.style.display="block";
+  image.style.display = "block";
+
+  // 4. Adiciona a classe que faz girar
+  image.classList.add('animar-foto');
 }
 
 button.addEventListener('click', surprisemovie);
