@@ -58,9 +58,52 @@ main{
   border-radius: 20px;
   max-width: 300px;
   height: auto;
-  margin: 20px auto;
+ 
   display: block;
   box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Container dos filtros */
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  
+}
+
+/* Esconde o quadradinho padrão do navegador */
+.genre-tab input {
+  display: none;
+}
+
+#overview{
+  margin-bottom: 15px;
+}
+
+/* Estilo do "Botão" desmarcado */
+.genre-tab {
+  padding: 10px 20px;
+  border: 2px solid #555;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Quando o mouse passa por cima */
+.genre-tab:hover {
+  border-color: #e50914;
+  background: rgba(229, 9, 20, 0.1);
+}
+
+/* A MÁGICA: Quando o input dentro do label estiver marcado (:checked) */
+.genre-tab:has(input:checked) {
+  background-color: #e50914;
+  border-color: #e50914;
+  color: white;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
 }
 
 .container {
@@ -72,7 +115,6 @@ main{
   max-width: 800px;
   text-align: center;
   margin: 0 auto;
-  padding: 40px 20px;
 }
 
 footer {

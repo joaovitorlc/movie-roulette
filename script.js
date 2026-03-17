@@ -34,6 +34,17 @@ async function surprisemovie() {
   const randomnumber = Math.floor(Math.random() * movies.length);
   const chosenmovie = movies[randomnumber];
 
+
+  // 1. Pegar apenas os 4 primeiros dígitos da data (o ano)
+const releaseYear = chosenmovie.release_date ? chosenmovie.release_date.split('-')[0] : "N/A";
+
+// 2. Pegar a nota (vote_average)
+const rating = chosenmovie.vote_average ? chosenmovie.vote_average.toFixed(1) : "N/A";
+
+// 3. Exibir no novo elemento que criamos
+const infoElement = document.getElementById('movie-info');
+infoElement.innerHTML = `<span>📅 ${releaseYear}</span> | <span>⭐ ${rating}/10</span>`;
+
   // --- PARTE 4: EXIBIR E ANIMAR ---
   display.innerText = "You should watch: " + chosenmovie.title;
   document.getElementById('overview').innerText = chosenmovie.overview;
