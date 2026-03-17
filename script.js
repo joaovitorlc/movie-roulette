@@ -1,34 +1,52 @@
 const button = document.getElementById('buttonsurprise');
 const display = document.getElementById('result');
 const API_KEY = 'e004b2fab558d15191ae4ab97b1c6599';
-const BASE_URL = 'https://api.themoviedb.org/3/movie/popular';
 
 async function surprisemovie() {
-  const response = await fetch(`${BASE_URL}?api_key=${API_KEY}&page=1`);
+  // --- PARTE 1: PEGAR OS GÊNEROS MARCADOS ---
+  // Buscamos todos os inputs que são do tipo checkbox e estão marcados (:checked)
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  
+  // Criamos uma lista com os números (IDs) dos gêneros, separados por vírgula
+  const genreIds = Array.from(checkboxes).map(cb => cb.value).join(',');
 
+  // --- PARTE 2: MONTAR A URL ---
+  // Usamos o "discover" para que o filtro de gênero funcione
+  let url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=pt-BR&sort_by=popularity.desc&page=1`;
+
+  // Se o usuário marcou algum gênero, adicionamos ele na URL
+  if (genreIds) {
+    url += `&with_genres=${genreIds}`;
+  }
+
+  // --- PARTE 3: BUSCAR OS DADOS ---
+  const response = await fetch(url);
   const info = await response.json();
-
   const movies = info.results;
 
+  // Se não encontrar nenhum filme com esses filtros, avisamos o usuário
+  if (movies.length === 0) {
+    display.innerText = "Nenhum filme encontrado com esses filtros!";
+    return;
+  }
+
+  // Sorteio
   const randomnumber = Math.floor(Math.random() * movies.length);
   const chosenmovie = movies[randomnumber];
-  display.innerText = "Your should watch: " + chosenmovie.title;
+
+  // --- PARTE 4: EXIBIR E ANIMAR ---
+  display.innerText = "You should watch: " + chosenmovie.title;
   document.getElementById('overview').innerText = chosenmovie.overview;
 
-const image = document.getElementById('moviephoto');
+  const image = document.getElementById('moviephoto');
   
-  // 1. Remove a classe de animação para resetar
+  // Reset da animação (aquele truque que você já aprendeu)
   image.classList.remove('animar-foto');
-
-  // 2. Truque para "resetar" o elemento no navegador
   void image.offsetWidth; 
 
-  // 3. Troca a foto (isso acontece enquanto ela está girando ou antes)
   const pathphoto = "https://image.tmdb.org/t/p/w500" + chosenmovie.poster_path;
   image.src = pathphoto;
   image.style.display = "block";
-
-  // 4. Adiciona a classe que faz girar
   image.classList.add('animar-foto');
 }
 
